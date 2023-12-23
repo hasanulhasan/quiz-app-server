@@ -33,7 +33,7 @@ const getSingleUser =async (req:Request, res: Response) => {
     const result = await UserService.getUser(Number(req.params.id));
     res.send({
       success: true,
-      message: 'All Users',
+      message: 'Single User fetched',
       data: result
     })
   } catch (error) {
