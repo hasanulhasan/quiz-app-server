@@ -40,6 +40,21 @@ const getTopic =async (req: Request, res: Response) => {
   }
 }
 
+const updateTopic =async (req:Request, res: Response) => {
+  const id = Number(req.params.id)
+  const payload = req.body
+  try {
+    const result = await TopicService.updateSingleTopic(id, payload);
+    res.send({
+      success: true,
+      message: 'Topic Updated',
+      data: result
+    })
+  } catch (error) {
+    res.send(error)
+  }
+}
+
 export const TopicController = {
-  insertIntoDB, getTopics, getTopic
+  insertIntoDB, getTopics, getTopic, updateTopic
 }

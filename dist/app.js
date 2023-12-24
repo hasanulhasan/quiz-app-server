@@ -1,0 +1,20 @@
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = __importDefault(require("express"));
+const cors_1 = __importDefault(require("cors"));
+const user_routes_1 = require("./modules/user/user.routes");
+const topic_routes_1 = require("./modules/topic/topic.routes");
+const question_routes_1 = require("./modules/question/question.routes");
+const score_routes_1 = require("./modules/score/score.routes");
+const app = (0, express_1.default)();
+app.use(express_1.default.json());
+app.use((0, cors_1.default)());
+app.use(express_1.default.urlencoded({ extended: true }));
+app.use('/v1/user', user_routes_1.UserRoutes);
+app.use('/v1/topic', topic_routes_1.TopicRoutes);
+app.use('/v1/question', question_routes_1.QuestionRoutes);
+app.use('/v1/score', score_routes_1.ScoreRoutes);
+exports.default = app;

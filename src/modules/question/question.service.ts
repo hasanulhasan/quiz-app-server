@@ -7,7 +7,11 @@ const insertToDB = async (data: Question): Promise<Question> => {
 }
 
 const getQuestions = async () => {
-  const result = await prisma.question.findMany()
+  const result = await prisma.question.findMany({
+    include: {
+      topic: true
+    }
+  });
   return result  
 }
 
@@ -31,5 +35,6 @@ const deleteQuestion = async (id: number) => {
   })
   return result
 }
+
 
 export const QuestionService = { insertToDB, getQuestions, getQuestion,deleteQuestion }

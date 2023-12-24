@@ -23,6 +23,16 @@ const getSingleTopic = async (id: number) => {
   return result
 }
 
+const updateSingleTopic =async (id: number, payload: Partial<Topic>): Promise<Topic>  => {
+  const result = await prisma.topic.update({
+    where: {
+      id
+    },
+    data: payload
+  })
+  return result
+}
+
 export const TopicService = {
-  insertToDB, getAllTopic, getSingleTopic
+  insertToDB, getAllTopic, getSingleTopic, updateSingleTopic
 }
