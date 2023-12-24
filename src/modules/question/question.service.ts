@@ -23,5 +23,13 @@ const getQuestion = async (id: number) => {
   return result  
 }
 
+const deleteQuestion = async (id: number) => {
+  const result = await prisma.question.delete({
+    where:{
+      id
+    }
+  })
+  return result
+}
 
-export const QuestionService = { insertToDB, getQuestions, getQuestion }
+export const QuestionService = { insertToDB, getQuestions, getQuestion,deleteQuestion }

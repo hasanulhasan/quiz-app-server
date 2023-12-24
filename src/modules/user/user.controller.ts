@@ -41,6 +41,22 @@ const getSingleUser =async (req:Request, res: Response) => {
   }
 }
 
+const updateSingleUser =async (req:Request, res: Response) => {
+  const id = Number(req.params.id)
+  const payload = req.body
+  try {
+    const result = await UserService.updateUser(id, payload);
+    res.send({
+      success: true,
+      message: 'Single User fetched',
+      data: result
+    })
+  } catch (error) {
+    res.send(error)
+  }
+}
+
+
 export const UserController = {
-  insertToDB,getAllUsers,getSingleUser
+  insertToDB,getAllUsers,getSingleUser,updateSingleUser
 }

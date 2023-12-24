@@ -21,6 +21,15 @@ const getSingleScore = async (id: number) => {
   return result
 }
 
+const deleteSingleScore = async (id: number) => {
+  const result = await prisma.score.delete({
+    where: {
+      id
+    }
+  })
+  return result
+}
+
 export const ScoreService = {
-  insertToDB, getAllScore, getSingleScore
+  insertToDB, getAllScore, getSingleScore, deleteSingleScore
 }

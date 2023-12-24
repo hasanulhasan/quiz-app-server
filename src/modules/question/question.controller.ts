@@ -40,6 +40,20 @@ const getSingleQuestion = async (req: Request, res: Response)=> {
   }
 }
 
+const deleteSingleQuestion = async (req: Request, res: Response)=> {
+  try {
+    const result = await QuestionService.deleteQuestion(Number(req.params.id));
+    res.send({
+      success: true,
+      message: 'Question Deleted',
+      data: result
+    })
+  } catch (error) {
+    res.send(error)
+  }
+}
+
+
 export const QuestionController = {
-  insertIntoDB, getAllQuestions, getSingleQuestion
+  insertIntoDB, getAllQuestions, getSingleQuestion, deleteSingleQuestion
 }

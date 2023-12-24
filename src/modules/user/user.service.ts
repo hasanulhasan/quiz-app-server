@@ -1,7 +1,7 @@
 import { PrismaClient, User } from "@prisma/client"
 const prisma = new PrismaClient();
 
-const insertIntoDB = async(data: User): Promise<User> => {
+const insertIntoDB = async (data: User): Promise<User> => {
   const result = await prisma.user.create({data})
   return result
 }
@@ -20,4 +20,14 @@ const getUser = async(id: number) => {
   return result;
 }
 
-export const UserService = { insertIntoDB, getUsers, getUser }
+const updateUser =async (id: number, payload: Partial<User>): Promise<User>  => {
+  const result = await prisma.user.update({
+    where: {
+      id
+    },
+    data: payload
+  })
+  return result
+}
+
+export const UserService = { insertIntoDB, getUsers, getUser, updateUser}

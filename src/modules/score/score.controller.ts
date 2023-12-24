@@ -40,6 +40,19 @@ const getScore =async (req: Request, res: Response) => {
   }
 }
 
+const deleteScore =async (req: Request, res: Response) => {
+  try {
+    const result = await ScoreService.deleteSingleScore(Number(req.params.id));
+    res.send({
+      success: true,
+      message: 'Score Deleted',
+      data: result
+    })
+  } catch (error) {
+    res.send(error)
+  }
+}
+
 export const ScoreController = {
-  insertIntoDB, getScores, getScore
+  insertIntoDB, getScores, getScore, deleteScore
 }
