@@ -20,10 +20,10 @@ model User {
 }
 
 model Topic {
-  id       Int        @id @default(autoincrement())
-  name     String
-  img      String
-  Question Question[]
+  id        Int        @id @default(autoincrement())
+  name      String
+  img       String
+  questions Question[]
 
   @@map("topic")
 }
@@ -39,4 +39,15 @@ model Question {
   updatedAt     DateTime @updatedAt
 
   @@map("questions")
+}
+
+model Score {
+  id        Int      @id @default(autoincrement())
+  userEmail String
+  topic     String
+  score     String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("scores")
 }

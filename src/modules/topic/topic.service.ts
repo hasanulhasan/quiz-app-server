@@ -16,6 +16,9 @@ const getSingleTopic = async (id: number) => {
     where: {
       id
     },
+    include: {
+      questions: true
+    }
   })
   return result
 }
